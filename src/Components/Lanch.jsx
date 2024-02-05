@@ -3,10 +3,11 @@ import YouTube from 'react-youtube';
 
 const Lanch = () => {
   const opts = {
-    height: '390',
-    width: '640',
+    height: '350',
+    width: '340',
     playerVars: {
       autoplay: 1,
+
     },
   };
 
@@ -19,8 +20,7 @@ const Lanch = () => {
     <div id="features">
       <h1>Nuevos candelazos</h1>
       <div className='a-container'>
-          <YouTube videoId="r9L1hAA5PDM" opts={opts} onReady={onReady} onPlay={true} />
-          <YouTube videoId="9MMini_p964" />
+          <YouTube videoId="r9L1hAA5PDM" opts={opts} onReady={onReady}  onPlay={true} />
       </div>
     </div>
   );
