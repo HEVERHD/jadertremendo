@@ -2,7 +2,7 @@
 const Header = () => {
  
   const ScrollToFeature = () => {
-    window.scroll({ top: document.querySelector('#feature').offsetTop - 50,
+    window.scroll({ top: document.querySelector('#features').offsetTop - 50,
     behavior: 'smooth' });
 
   }
@@ -15,7 +15,7 @@ const Header = () => {
             <p className="details"> <span>DJ, ANIMADOR Y PRODUCTOR DE</span>  CHAMPETA (MIP)</p>
              <div className="header-btns">
             
-                <a onClick={ScrollToFeature} href="features" className="header-btn">Vamo' alla</a>
+                <a onClick={ScrollToFeature}  className="header-btn">Vamo' alla</a>
              </div>
         </div>
 

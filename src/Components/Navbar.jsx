@@ -23,8 +23,8 @@ const Navbar = () => {
                     <span className='nav-icon'/>
                  </label>
                  <ul className='menu'>
-                    <li><Link to="#"> Header </Link></li>
-                    <li><Link to="features"> Feature </Link></li>
+                    <li><Link to="#"> Inicio </Link></li>
+                    <li><Link to="features"> Lanzamientos </Link></li>
                     <li><Link to="#"> Offert </Link></li>
                     <li><Link to="#"> About </Link></li>
                     <li><Link to="#"> Contact </Link></li>
