@@ -9,8 +9,7 @@ export const Contact = () => {
             <input type="email" name="email" placeholder="Email Address"/><br />
             <textarea name="message" rows="5" cols="30" placeholder="Message"></textarea><br />
             <button type="submit">Submit</button>
-        </form>
-        
+        </form>   
     </div>
   )
 }

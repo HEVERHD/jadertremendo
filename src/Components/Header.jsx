@@ -15,7 +15,6 @@ const Header = () => {
             <h2> JADER TREMENDO</h2>
             <p className="details"> <span>DJ, ANIMADOR Y PRODUCTOR DE</span>  CHAMPETA (MIP)</p>
              <div className="header-btns">
-            
                 <a onClick={ScrollToFeature}  href="features"  className="header-btn">Vamo' alla</a>
              </div>
         </div>
