@@ -7,6 +7,7 @@ import About from "./Components/About"
 import { Contact } from "./Components/Contact"
 import Lanch from "./Components/Lanch"
 import Clasic from "./Components/Clasics"
+import DemoCarousel from "./Components/DemoCarousel"
 
 
 
@@ -17,6 +18,7 @@ function App() {
       <Navbar />
       <Header />
       <Lanch />
+      <DemoCarousel />
       <Clasic />
       <About />
       <Contact />
