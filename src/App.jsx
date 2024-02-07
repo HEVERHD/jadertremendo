@@ -8,6 +8,8 @@ import { Contact } from "./Components/Contact"
 import Lanch from "./Components/Lanch"
 import Clasic from "./Components/Clasics"
 import DemoCarousel from "./Components/DemoCarousel"
+import RedesSociales from "./Components/RedesSociales"
+import Footer from "./Components/Footer"
 
 
 
@@ -21,7 +23,9 @@ function App() {
       <DemoCarousel />
       <Clasic />
       <About />
+      <RedesSociales />
       <Contact />
+      <Footer />
      </div>
     </>
   )
