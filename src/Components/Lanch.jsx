@@ -4,7 +4,7 @@ import YouTube from 'react-youtube';
 const Lanch = () => {
   const opts = {
     height: '350',
-    width: '440',
+    width: '375',
     playerVars: {
       autoplay: 1,
 

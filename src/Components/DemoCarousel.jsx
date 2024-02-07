@@ -40,19 +40,19 @@ const DemoCarousel = () => {
             </div>
             <div>
                 <img src={slider2}  alt="Slide 2" />
-                <p className="legend">Legend 2</p>
+                <p className="legend">Eso es todo</p>
             </div>
             <div>
                 <img src={slider3}  alt="Slide 3" />
-                <p className="legend">Legend 3</p>
+                <p className="legend">Buscalooo</p>
             </div>
             <div>
                 <img src={slider4} alt="Slide 4" />
-                <p className="legend">Legend 4</p>
+                <p className="legend">N O R M A L</p>
             </div>
             <div>
                 <img src={slider5}alt="Slide 5" />
-                <p className="legend">Legend 5</p>
+                <p className="legend">Viene la vaina.</p>
             </div>
            
         </Carousel>
