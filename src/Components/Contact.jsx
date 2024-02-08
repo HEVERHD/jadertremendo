@@ -31,7 +31,7 @@ export const Contact = () => {
   };
 
   return (
-    <div id='contact' style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0.0, 0, 0.8)), url("https://i.ibb.co/LP03mPf/slider9.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+    <div id='contact' style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 1.9), rgba(0, 0.0, 0, 0.5)), url("https://i.ibb.co/LP03mPf/slider9.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', marginTop:"20px"}}>
       <h1>Para contratos</h1>
       <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
         <input
@@ -40,8 +40,8 @@ export const Contact = () => {
           placeholder="Nombre de quien solicita el show"
           value={formData.name}
           onChange={handleChange}
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)', border: '1px solid #fff', color: '#000', padding: '10px', borderRadius: '5px', marginBottom: '10px' }}
-        /><br />
+          style={{ backgroundColor: '#0000', border: '1px solid #fff', color: '#fff', padding: '10px', borderRadius: '5px', marginBottom: '10px' }}
+        />
     
         <textarea
           name="message"
