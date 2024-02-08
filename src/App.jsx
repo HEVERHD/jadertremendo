@@ -23,8 +23,8 @@ function App() {
       <DemoCarousel />
       <Clasic />
       <About />
-      <RedesSociales />
       <Contact />
+      <RedesSociales />
       <Footer />
      </div>
     </>

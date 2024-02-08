@@ -8,7 +8,7 @@ const RedesSociales = () => {
   return (
     <>
       <div id='redes-sociales'>
-        <h1>RedesSociales</h1>
+        <h1>Redes Sociales</h1>
         <div>
 
         <a href="https://www.facebook.com/JaderTremendoP" rel="noopener">

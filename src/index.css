@@ -451,6 +451,28 @@ nav .menu-btn,
     background: linear-gradient(90deg, #FF1414 20%,#f70000);
     color: #ffffff;
     text-transform: uppercase;
+
+
+}
+
+.send {
+    width: 40%;
+    height: 50px;
+    margin: 5px 0px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #ffffff2d;
+    color: #ffffff;
+    border-radius: 5px;
+    transition: all ease 0.3s; /* Mueve la transición aquí para que afecte a todas las propiedades cambiadas */
+
+    /* :hover directamente después de .send */
+    &:hover {
+        background-color: #00a759;
+        color: #ffffff;
+        
+    }
 }
 @media(max-width:620px){
     #contact form{
@@ -541,8 +563,8 @@ nav .menu-btn,
 	#about{
 		justify-content: center;
         text-align: center;
-        
-        margin-top: -90px;
+        margin-top: -312px;
+        margin-bottom: -175px;
 	}
 	.about-text{
         width: 90%;
@@ -555,6 +577,12 @@ nav .menu-btn,
     }
     #features{
         margin-bottom: 100px;
+
+        .h1{
+            font-size: 2rem;
+            color: #bb0404;
+        
+        }
     }
 }
 @media(max-width:600px){
@@ -572,14 +600,9 @@ nav .menu-btn,
         justify-content: center;
         align-items: center;
         flex-direction: column;
-     
-        color: #dd0000;
         font-size: 8px;
-     
-    
-       
-    
     }
+
 }
 
 @media(max-width:1100px){.menu-icon{
@@ -682,6 +705,16 @@ nav .menu-btn,
             align-items: center;
         
         }
+
+        
+    #features{
+        margin-bottom: 100px;
+        h1{
+            font-size: 2rem;
+            color: #b3b3b3;
+        
+        }
+    }
 
       
 
