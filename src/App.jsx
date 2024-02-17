@@ -31,10 +31,10 @@ function App() {
           width={475}
           height={4050}
           recycle={false}
-          numberOfPieces={6000}
+          numberOfPieces={1000}
           run={isConfettiVisible}
           onAnimationEnd={hideConfetti}
-          friction={0.96}
+          friction={0.95}
           colors={['#FF1414', '#ffc94b']}
 
      
