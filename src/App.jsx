@@ -28,14 +28,14 @@ function App() {
 
 {isConfettiVisible && (
         <Confetti
-          width={475}
-          height={4050}
+          width={window.innerWidth}
+          height={window.innerHeight}
           recycle={false}
           numberOfPieces={1000}
           run={isConfettiVisible}
           onAnimationEnd={hideConfetti}
           friction={0.95}
-          colors={['#FF1414', '#ffc94b']}
+          colors={['#FF1414', '#222163'," #F7BD16"]}
 
      
         />
