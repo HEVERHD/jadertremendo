@@ -31,7 +31,7 @@ export const Contact = () => {
   };
 
   return (
-    <div id='contact' style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 1.9), rgba(0, 0.0, 0, 0.5)), url("https://i.ibb.co/LP03mPf/slider9.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', marginTop:"20px"}}>
+    <div id='contact' style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 1.9), rgba(0, 0.0, 0, 0.8)), ', backgroundSize: 'cover', backgroundPosition: 'center', marginTop:"20px"}}>
       <h1>Para contratos</h1>
       <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
         <input
