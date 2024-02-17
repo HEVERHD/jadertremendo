@@ -20,7 +20,7 @@ const Lanch = () => {
     <div id="features">
       <h1>Nuevos candelazos</h1>
       <div className='a-container'>
-          <YouTube videoId="r9L1hAA5PDM" opts={opts} onReady={onReady}  onPlay={true} />
+          <YouTube videoId="-Jsk43QnV7U" opts={opts} onReady={onReady}  onPlay={1} />
       </div>
     </div>
   );

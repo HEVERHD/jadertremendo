@@ -1,4 +1,6 @@
-import React from "react"
+import React, { useState } from 'react';
+
+import Confetti from 'react-confetti';
 
 import "./index.css"
 import Navbar from "./Components/Navbar"
@@ -14,8 +16,30 @@ import Footer from "./Components/Footer"
 
 
 function App() {
+  const [isConfettiVisible, setConfettiVisible] = useState(true);
+
+  const hideConfetti = () => {
+    setConfettiVisible(false);
+  };
+
+
   return (
     <>
+
+{isConfettiVisible && (
+        <Confetti
+          width={475}
+          height={4050}
+          recycle={false}
+          numberOfPieces={6000}
+          run={isConfettiVisible}
+          onAnimationEnd={hideConfetti}
+          friction={0.96}
+          colors={['#FF1414', '#ffc94b']}
+
+     
+        />
+      )}
      <div className="App">
       <Navbar />
       <Header />
