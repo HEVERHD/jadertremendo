@@ -55,11 +55,11 @@ export default function Gallery() {
           centeredSlides
           slidesPerView="auto"
           coverflowEffect={{
-            rotate: 25,
+            rotate: 20,
             stretch: 0,
-            depth: 150,
-            modifier: 1.2,
-            slideShadows: true,
+            depth: 120,
+            modifier: 1,
+            slideShadows: false,
           }}
           autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
           pagination={{ clickable: true, dynamicBullets: true }}
@@ -71,14 +71,13 @@ export default function Gallery() {
             <SwiperSlide
               key={caption}
               className="rounded-2xl overflow-hidden"
-              style={{ width: 'min(300px, 80vw)' }}
+              style={{ width: 'min(280px, 75vw)' }}
             >
               <div className="relative group cursor-grab active:cursor-grabbing">
                 <img
                   src={src}
                   alt={caption}
-                  className="w-full aspect-[4/5] object-cover rounded-2xl"
-                  loading="lazy"
+                  className="w-full h-72 object-cover rounded-2xl block"
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent rounded-2xl" />
