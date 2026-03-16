@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Confetti from 'react-confetti'
 import Navbar from './Components/Navbar'
 import Hero from './Components/Hero'
@@ -11,17 +11,66 @@ import SocialMedia from './Components/SocialMedia'
 import Footer from './Components/Footer'
 
 function App() {
-  const [showConfetti, setShowConfetti] = useState(true)
+  const [showConfetti, setShowConfetti] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const playedRef = useRef(false)
+
+  useEffect(() => {
+    const audio = new Audio('/conustedes.mp3')
+    audio.loop = false
+    audio.volume = 0.6
+    audioRef.current = audio
+
+    // Lanzar confetti 4 segundos antes de que termine el audio
+    const handleTimeUpdate = () => {
+      if (audio.duration && audio.currentTime >= audio.duration - 4) {
+        setShowConfetti(true)
+        audio.removeEventListener('timeupdate', handleTimeUpdate)
+      }
+    }
+    audio.addEventListener('timeupdate', handleTimeUpdate)
+
+    // Autoplay: arrancar muted (siempre permitido) y desmutear enseguida
+    audio.muted = true
+    audio.play()
+      .then(() => {
+        audio.muted = false
+        playedRef.current = true
+      })
+      .catch(() => {
+        // Fallback: reproducir en la primera interacción del usuario
+        const tryPlay = () => {
+          if (playedRef.current || !audioRef.current) return
+          audioRef.current.muted = false
+          audioRef.current.play()
+            .then(() => { playedRef.current = true })
+            .catch(() => {})
+        }
+        window.addEventListener('click', tryPlay, { once: true })
+        window.addEventListener('touchstart', tryPlay, { once: true })
+      })
+
+    return () => {
+      audio.removeEventListener('timeupdate', handleTimeUpdate)
+      audio.pause()
+      audio.src = ''
+    }
+  }, [])
 
   return (
     <div className="bg-dark text-white min-h-screen">
       {showConfetti && (
         <Confetti
-          numberOfPieces={800}
-          colors={['#FF1414', '#FF6B00', '#ffffff', '#FF0080', '#FFD700']}
-          friction={0.97}
+          width={window.innerWidth}
+          height={window.innerHeight}
+          numberOfPieces={900}
+          colors={['#FF1414', '#FF6B00', '#ffffff', '#FF0080', '#FFD700', '#FF4500']}
+          gravity={0.04}
+          friction={0.99}
+          initialVelocityY={3}
           recycle={false}
           onConfettiComplete={() => setShowConfetti(false)}
+          style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999, pointerEvents: 'none' }}
         />
       )}
       <Navbar />
