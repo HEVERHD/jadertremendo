@@ -30,25 +30,36 @@ function App() {
     }
     audio.addEventListener('timeupdate', handleTimeUpdate)
 
-    // Autoplay: arrancar muted (siempre permitido) y desmutear enseguida
+    // Fallback para móviles: reproducir en la primera interacción
+    const tryPlay = () => {
+      if (playedRef.current || !audioRef.current) return
+      audioRef.current.muted = true
+      audioRef.current.play()
+        .then(() => {
+          audioRef.current!.muted = false
+          playedRef.current = true
+          cleanup()
+        })
+        .catch(() => {})
+    }
+    const cleanup = () => {
+      window.removeEventListener('touchstart', tryPlay)
+      window.removeEventListener('scroll', tryPlay)
+      window.removeEventListener('click', tryPlay)
+    }
+    window.addEventListener('touchstart', tryPlay, { once: true })
+    window.addEventListener('scroll', tryPlay, { once: true })
+    window.addEventListener('click', tryPlay, { once: true })
+
+    // Autoplay desktop: arrancar muted y desmutear enseguida
     audio.muted = true
     audio.play()
       .then(() => {
         audio.muted = false
         playedRef.current = true
+        cleanup()
       })
-      .catch(() => {
-        // Fallback: reproducir en la primera interacción del usuario
-        const tryPlay = () => {
-          if (playedRef.current || !audioRef.current) return
-          audioRef.current.muted = false
-          audioRef.current.play()
-            .then(() => { playedRef.current = true })
-            .catch(() => {})
-        }
-        window.addEventListener('click', tryPlay, { once: true })
-        window.addEventListener('touchstart', tryPlay, { once: true })
-      })
+      .catch(() => { /* móvil: espera interacción del usuario */ })
 
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate)
