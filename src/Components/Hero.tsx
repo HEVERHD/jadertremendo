@@ -77,7 +77,7 @@ function CountUp({ end, format }: { end: number; format: (n: number) => string }
 
 // ─── Stats data ───────────────────────────────────────────────────────────────
 const statsData = [
-  { end: 10,  format: (n: number) => `${n}+`,                              label: 'Años'  },
+  { end: 13,  format: (n: number) => `${n}+`,                              label: 'Años'  },
   { end: 500, format: (n: number) => `${n}+`,                              label: 'Shows' },
   { end: 10,  format: (n: number) => `${(n / 10).toFixed(n < 10 ? 1 : 0)}M+`, label: 'Fans'  },
 ]
