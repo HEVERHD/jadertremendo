@@ -127,9 +127,11 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
       id="inicio"
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+      {/* Background image — breathing scale */}
+      <motion.div
+        animate={{ scale: [1.05, 1.11, 1.05] }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${bannerImg})` }}
       />
 
@@ -137,19 +139,23 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/95" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
 
-      {/* Fire glow from bottom */}
-      <div
+      {/* Fire glow from bottom — pulsing */}
+      <motion.div
+        animate={{ opacity: [0.7, 1.4, 0.7] }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute bottom-0 left-0 right-0 h-2/3 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,80,0,0.25) 0%, rgba(255,20,20,0.12) 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,80,0,0.3) 0%, rgba(255,20,20,0.15) 40%, transparent 70%)',
         }}
       />
 
-      {/* Center burst glow behind title */}
-      <div
+      {/* Center burst glow — pulsing */}
+      <motion.div
+        animate={{ opacity: [0.6, 1.5, 0.6], scale: [1, 1.12, 1] }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 60% 40% at 50% 52%, rgba(255,40,0,0.18) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse 60% 40% at 50% 52%, rgba(255,40,0,0.22) 0%, transparent 65%)',
         }}
       />
 
@@ -166,7 +172,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
               links: { enable: false },
               move: {
                 enable: true,
-                speed: { min: 1.5, max: 4 },
+                speed: { min: 2.5, max: 7 },
                 direction: 'top',
                 random: true,
                 straight: false,
@@ -174,7 +180,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
               },
               number: {
                 density: { enable: true },
-                value: 90,
+                value: 150,
               },
               opacity: {
                 value: { min: 0.2, max: 0.8 },
@@ -214,7 +220,11 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
           <span className="text-base">🔥</span>
         </motion.div>
 
-        {/* JADER — letters fall from top */}
+        {/* JADER — letters fall from top — beat pulse wrapper */}
+        <motion.div
+          animate={{ scale: [1, 1.03, 1] }}
+          transition={{ duration: 0.35, repeat: Infinity, repeatDelay: 2.8, ease: [0.4, 0, 0.2, 1] }}
+        >
         <div
           className={`leading-none mb-1 perspective-[600px] relative${isGlitching ? ' glitch-active' : ''}`}
           onClick={showHint ? handleTitleClick : undefined}
@@ -288,6 +298,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
             ))}
           </div>
         </div> {/* end perspective wrapper */}
+        </motion.div> {/* end beat pulse wrapper */}
 
         {/* Fire divider */}
         <motion.div

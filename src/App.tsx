@@ -47,15 +47,26 @@ function App() {
     }
     audio.addEventListener('timeupdate', handleTimeUpdate)
 
-    // Autoplay desktop: arrancar muted y desmutear enseguida
+    // Móvil/iOS: mostrar hint siempre (iOS ignora muted trick silenciosamente)
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+      || navigator.maxTouchPoints > 1
+    if (isMobile) setNeedsInteraction(true)
+
+    // Intentar autoplay
     audio.muted = true
     audio.play()
       .then(() => {
         audio.muted = false
         playedRef.current = true
+        // Confirmar que el audio realmente avanzó (iOS a veces falla silenciosamente)
+        setTimeout(() => {
+          if (!audio.paused && audio.currentTime > 0.3) {
+            setNeedsInteraction(false)
+          }
+          // Si no avanzó, el hint permanece para que el usuario toque
+        }, 1500)
       })
       .catch(() => {
-        // Móvil: mostrar hint para tocar el título
         setNeedsInteraction(true)
       })
 
