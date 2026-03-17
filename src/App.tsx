@@ -9,12 +9,16 @@ import About from './Components/About'
 import Contact from './Components/Contact'
 import SocialMedia from './Components/SocialMedia'
 import Footer from './Components/Footer'
+import Loader from './Components/Loader'
+import AudioProgress from './Components/AudioProgress'
 
 function App() {
+  const [showLoader, setShowLoader] = useState(true)
   const [showConfetti, setShowConfetti] = useState(false)
   const [needsInteraction, setNeedsInteraction] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const playedRef = useRef(false)
+  const confettiFiredRef = useRef(false)
 
   const activateAudio = () => {
     if (playedRef.current || !audioRef.current) return
@@ -34,11 +38,11 @@ function App() {
     audio.volume = 0.6
     audioRef.current = audio
 
-    // Lanzar confetti 4 segundos antes de que termine el audio
+    // Confetti 4 segundos antes de que termine + mantener listener para AudioProgress
     const handleTimeUpdate = () => {
-      if (audio.duration && audio.currentTime >= audio.duration - 4) {
+      if (audio.duration && !confettiFiredRef.current && audio.currentTime >= audio.duration - 4) {
+        confettiFiredRef.current = true
         setShowConfetti(true)
-        audio.removeEventListener('timeupdate', handleTimeUpdate)
       }
     }
     audio.addEventListener('timeupdate', handleTimeUpdate)
@@ -63,7 +67,9 @@ function App() {
   }, [])
 
   return (
-    <div className="bg-dark text-white min-h-screen">
+    <>
+      <Loader onComplete={() => setShowLoader(false)} />
+      {!showLoader && <AudioProgress audioRef={audioRef} />}
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
@@ -78,18 +84,20 @@ function App() {
           style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999, pointerEvents: 'none' }}
         />
       )}
-      <Navbar />
-      <main>
-        <Hero showHint={needsInteraction} onActivate={activateAudio} />
-        <NewReleases />
-        <Gallery />
-        <Classics />
-        <About />
-        <Contact />
-        <SocialMedia />
-      </main>
-      <Footer />
-    </div>
+      <div className="bg-dark text-white min-h-screen">
+        <Navbar />
+        <main>
+          <Hero showHint={needsInteraction} onActivate={activateAudio} />
+          <NewReleases />
+          <Gallery />
+          <Classics />
+          <About />
+          <Contact />
+          <SocialMedia />
+        </main>
+        <Footer />
+      </div>
+    </>
   )
 }
 

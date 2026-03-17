@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
@@ -40,6 +40,49 @@ const letterVariantsUp = {
   }),
 }
 
+// ─── CountUp: contador animado al entrar en viewport ─────────────────────────
+function CountUp({ end, format }: { end: number; format: (n: number) => string }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  const startedRef = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !startedRef.current) {
+          startedRef.current = true
+          const start = performance.now()
+          const duration = 1800
+          const animate = (now: number) => {
+            const t = Math.min((now - start) / duration, 1)
+            const eased = 1 - Math.pow(1 - t, 3)
+            setCount(Math.round(eased * end))
+            if (t < 1) requestAnimationFrame(animate)
+            else setCount(end)
+          }
+          requestAnimationFrame(animate)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.5 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [end])
+
+  return <span ref={ref}>{format(count)}</span>
+}
+
+// ─── Stats data ───────────────────────────────────────────────────────────────
+const statsData = [
+  { end: 10,  format: (n: number) => `${n}+`,                              label: 'Años'  },
+  { end: 500, format: (n: number) => `${n}+`,                              label: 'Shows' },
+  { end: 10,  format: (n: number) => `${(n / 10).toFixed(n < 10 ? 1 : 0)}M+`, label: 'Fans'  },
+]
+
+// ─── Props ────────────────────────────────────────────────────────────────────
 interface HeroProps {
   showHint?: boolean
   onActivate?: () => void
@@ -48,11 +91,28 @@ interface HeroProps {
 export default function Hero({ showHint = false, onActivate }: HeroProps) {
   const [particlesReady, setParticlesReady] = useState(false)
   const [letterState, setLetterState] = useState<'visible' | 'activated'>('visible')
+  const [isGlitching, setIsGlitching] = useState(false)
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine)
     }).then(() => setParticlesReady(true))
+  }, [])
+
+  // Glitch aleatorio cada 4-9 segundos
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>
+    const schedule = () => {
+      timeout = setTimeout(() => {
+        setIsGlitching(true)
+        setTimeout(() => {
+          setIsGlitching(false)
+          schedule()
+        }, 400)
+      }, 4000 + Math.random() * 5000)
+    }
+    schedule()
+    return () => clearTimeout(timeout)
   }, [])
 
   const handleTitleClick = () => {
@@ -156,7 +216,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
 
         {/* JADER — letters fall from top */}
         <div
-          className="leading-none mb-1 perspective-[600px] relative"
+          className={`leading-none mb-1 perspective-[600px] relative${isGlitching ? ' glitch-active' : ''}`}
           onClick={showHint ? handleTitleClick : undefined}
           style={showHint ? { cursor: 'pointer' } : {}}
         >
@@ -270,11 +330,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
           transition={{ delay: 1.8, duration: 0.7 }}
           className="mt-12 flex items-center gap-10"
         >
-          {[
-            { value: '10+', label: 'Años' },
-            { value: '500+', label: 'Shows' },
-            { value: '1M+', label: 'Fans' },
-          ].map(({ value, label }, i) => (
+          {statsData.map(({ end, format, label }, i) => (
             <div key={label} className="text-center">
               <motion.p
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -288,7 +344,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
                   backgroundClip: 'text',
                 }}
               >
-                {value}
+                <CountUp end={end} format={format} />
               </motion.p>
               <p className="text-white/40 text-[10px] uppercase tracking-[0.2em] mt-0.5">{label}</p>
             </div>

@@ -140,4 +140,19 @@
     background: rgba(255,20,20,0.4);
     color: #fff;
   }
+
+  /* ─── Glitch effect ──────────────────────────── */
+  @keyframes glitch {
+    0%   { transform: translate(0) skewX(0deg); filter: none; }
+    15%  { transform: translate(-8px, 2px) skewX(-7deg); filter: brightness(1.9) contrast(1.2); }
+    30%  { transform: translate(7px, -2px) skewX(5deg); filter: brightness(0.6); }
+    45%  { transform: translate(-5px, 1px) skewX(-4deg); filter: brightness(1.5); }
+    60%  { transform: translate(4px, -1px) skewX(2deg); filter: none; }
+    80%  { transform: translate(-2px, 0) skewX(-1deg); filter: none; }
+    100% { transform: translate(0) skewX(0deg); filter: none; }
+  }
+
+  .glitch-active {
+    animation: glitch 0.38s steps(1) forwards;
+  }
 }
