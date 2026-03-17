@@ -20,12 +20,15 @@ function App() {
   const playedRef = useRef(false)
   const confettiFiredRef = useRef(false)
 
+  // Activar audio desde gesto del usuario (toque en el título)
   const activateAudio = () => {
-    if (playedRef.current || !audioRef.current) return
-    audioRef.current.muted = true
-    audioRef.current.play()
+    if (!audioRef.current) return
+    const audio = audioRef.current
+    audio.pause()
+    audio.currentTime = 0   // reiniciar desde el inicio
+    audio.muted = false
+    audio.play()
       .then(() => {
-        audioRef.current!.muted = false
         playedRef.current = true
         setNeedsInteraction(false)
       })
@@ -38,7 +41,7 @@ function App() {
     audio.volume = 0.6
     audioRef.current = audio
 
-    // Confetti 4 segundos antes de que termine + mantener listener para AudioProgress
+    // Confetti 4 segundos antes de que termine
     const handleTimeUpdate = () => {
       if (audio.duration && !confettiFiredRef.current && audio.currentTime >= audio.duration - 4) {
         confettiFiredRef.current = true
@@ -47,24 +50,21 @@ function App() {
     }
     audio.addEventListener('timeupdate', handleTimeUpdate)
 
-    // Móvil/iOS: mostrar hint siempre (iOS ignora muted trick silenciosamente)
+    // Móvil/iOS: mostrar hint siempre — NO marcar playedRef aquí
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
       || navigator.maxTouchPoints > 1
     if (isMobile) setNeedsInteraction(true)
 
-    // Intentar autoplay
+    // Intentar autoplay silencioso (funciona en desktop, Android)
     audio.muted = true
     audio.play()
       .then(() => {
         audio.muted = false
-        playedRef.current = true
-        // Confirmar que el audio realmente avanzó (iOS a veces falla silenciosamente)
-        setTimeout(() => {
-          if (!audio.paused && audio.currentTime > 0.3) {
-            setNeedsInteraction(false)
-          }
-          // Si no avanzó, el hint permanece para que el usuario toque
-        }, 1500)
+        if (!isMobile) {
+          // Desktop: autoplay con sonido confirmado
+          playedRef.current = true
+        }
+        // Móvil: no marcamos playedRef, el hint permanece para que el usuario toque
       })
       .catch(() => {
         setNeedsInteraction(true)
