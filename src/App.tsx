@@ -12,8 +12,21 @@ import Footer from './Components/Footer'
 
 function App() {
   const [showConfetti, setShowConfetti] = useState(false)
+  const [needsInteraction, setNeedsInteraction] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const playedRef = useRef(false)
+
+  const activateAudio = () => {
+    if (playedRef.current || !audioRef.current) return
+    audioRef.current.muted = true
+    audioRef.current.play()
+      .then(() => {
+        audioRef.current!.muted = false
+        playedRef.current = true
+        setNeedsInteraction(false)
+      })
+      .catch(() => {})
+  }
 
   useEffect(() => {
     const audio = new Audio('/conustedes.mp3')
@@ -30,36 +43,17 @@ function App() {
     }
     audio.addEventListener('timeupdate', handleTimeUpdate)
 
-    // Fallback para móviles: reproducir en la primera interacción
-    const tryPlay = () => {
-      if (playedRef.current || !audioRef.current) return
-      audioRef.current.muted = true
-      audioRef.current.play()
-        .then(() => {
-          audioRef.current!.muted = false
-          playedRef.current = true
-          cleanup()
-        })
-        .catch(() => {})
-    }
-    const cleanup = () => {
-      window.removeEventListener('touchstart', tryPlay)
-      window.removeEventListener('scroll', tryPlay)
-      window.removeEventListener('click', tryPlay)
-    }
-    window.addEventListener('touchstart', tryPlay, { once: true })
-    window.addEventListener('scroll', tryPlay, { once: true })
-    window.addEventListener('click', tryPlay, { once: true })
-
     // Autoplay desktop: arrancar muted y desmutear enseguida
     audio.muted = true
     audio.play()
       .then(() => {
         audio.muted = false
         playedRef.current = true
-        cleanup()
       })
-      .catch(() => { /* móvil: espera interacción del usuario */ })
+      .catch(() => {
+        // Móvil: mostrar hint para tocar el título
+        setNeedsInteraction(true)
+      })
 
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate)
@@ -86,7 +80,7 @@ function App() {
       )}
       <Navbar />
       <main>
-        <Hero />
+        <Hero showHint={needsInteraction} onActivate={activateAudio} />
         <NewReleases />
         <Gallery />
         <Classics />

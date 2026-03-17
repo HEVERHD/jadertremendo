@@ -8,31 +8,59 @@ import bannerImg from '../images/banner.png'
 const letterVariants = {
   hidden: { opacity: 0, y: 60, rotateX: -90 },
   visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
+    opacity: 1, y: 0, rotateX: 0,
     transition: { duration: 0.5, delay: 0.4 + i * 0.07, ease: 'easeOut' },
+  }),
+  activated: (i: number) => ({
+    y: [0, -28, 8, -14, 0],
+    scale: [1, 1.35, 0.85, 1.15, 1],
+    rotateZ: [0, -12, 12, -6, 0],
+    transition: { duration: 0.55, delay: i * 0.055, ease: 'easeInOut' },
   }),
 }
 
 const letterVariantsUp = {
   hidden: { opacity: 0, y: -60, rotateX: 90 },
   visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
+    opacity: 1, y: 0, rotateX: 0,
     transition: { duration: 0.5, delay: 0.7 + i * 0.07, ease: 'easeOut' },
+  }),
+  activated: (i: number) => ({
+    y: [0, -36, 10, -18, 0],
+    scale: [1, 1.5, 0.8, 1.2, 1],
+    rotateZ: [0, 10, -10, 5, 0],
+    filter: [
+      'drop-shadow(0 0 12px rgba(255,60,0,0.9)) drop-shadow(0 0 30px rgba(255,20,20,0.6))',
+      'drop-shadow(0 0 40px rgba(255,150,0,1)) drop-shadow(0 0 80px rgba(255,60,0,1))',
+      'drop-shadow(0 0 20px rgba(255,60,0,0.9)) drop-shadow(0 0 40px rgba(255,20,20,0.7))',
+      'drop-shadow(0 0 35px rgba(255,120,0,1)) drop-shadow(0 0 60px rgba(255,40,0,0.9))',
+      'drop-shadow(0 0 12px rgba(255,60,0,0.9)) drop-shadow(0 0 30px rgba(255,20,20,0.6))',
+    ],
+    transition: { duration: 0.6, delay: i * 0.055, ease: 'easeInOut' },
   }),
 }
 
-export default function Hero() {
+interface HeroProps {
+  showHint?: boolean
+  onActivate?: () => void
+}
+
+export default function Hero({ showHint = false, onActivate }: HeroProps) {
   const [particlesReady, setParticlesReady] = useState(false)
+  const [letterState, setLetterState] = useState<'visible' | 'activated'>('visible')
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine)
     }).then(() => setParticlesReady(true))
   }, [])
+
+  const handleTitleClick = () => {
+    if (!onActivate) return
+    setLetterState('activated')
+    onActivate()
+    setTimeout(() => setLetterState('visible'), 900)
+  }
 
   return (
     <section
@@ -127,7 +155,30 @@ export default function Hero() {
         </motion.div>
 
         {/* JADER — letters fall from top */}
-        <div className="leading-none mb-1 perspective-[600px]">
+        <div
+          className="leading-none mb-1 perspective-[600px] relative"
+          onClick={showHint ? handleTitleClick : undefined}
+          style={showHint ? { cursor: 'pointer' } : {}}
+        >
+          {/* Hint para móviles */}
+          {showHint && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: [0.6, 1, 0.6], y: [0, -4, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-1.5 rounded-full whitespace-nowrap z-20"
+              style={{
+                background: 'rgba(255,80,0,0.2)',
+                border: '1px solid rgba(255,107,0,0.5)',
+                boxShadow: '0 0 16px rgba(255,69,0,0.4)',
+              }}
+            >
+              <span className="text-sm">🔊</span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: '#FF8C00' }}>
+                Toca para escuchar
+              </span>
+            </motion.div>
+          )}
           <div className="flex justify-center overflow-hidden">
             {'JADER'.split('').map((letter, i) => (
               <motion.span
@@ -135,7 +186,7 @@ export default function Hero() {
                 custom={i}
                 variants={letterVariants}
                 initial="hidden"
-                animate="visible"
+                animate={letterState}
                 className="inline-block font-black uppercase text-white"
                 style={{
                   fontSize: 'clamp(3.5rem, 14vw, 8rem)',
@@ -158,7 +209,7 @@ export default function Hero() {
                 custom={i}
                 variants={letterVariantsUp}
                 initial="hidden"
-                animate="visible"
+                animate={letterState}
                 className="inline-block font-black uppercase"
                 style={{
                   fontSize: 'clamp(3.5rem, 14vw, 8rem)',
@@ -176,7 +227,7 @@ export default function Hero() {
               </motion.span>
             ))}
           </div>
-        </div>
+        </div> {/* end perspective wrapper */}
 
         {/* Fire divider */}
         <motion.div
