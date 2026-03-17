@@ -20,13 +20,32 @@ function App() {
   const playedRef = useRef(false)
   const confettiFiredRef = useRef(false)
 
-  // Activar audio desde gesto del usuario (toque en el título)
+  const setupTimeUpdate = (audio: HTMLAudioElement) => {
+    const handler = () => {
+      if (audio.duration && !confettiFiredRef.current && audio.currentTime >= audio.duration - 4) {
+        confettiFiredRef.current = true
+        setShowConfetti(true)
+      }
+    }
+    audio.addEventListener('timeupdate', handler)
+    return handler
+  }
+
+  // iOS Safari: el audio DEBE crearse y reproducirse dentro del gesto del usuario
   const activateAudio = () => {
-    if (!audioRef.current) return
-    const audio = audioRef.current
-    audio.pause()
-    audio.currentTime = 0   // reiniciar desde el inicio
-    audio.muted = false
+    if (playedRef.current) return
+    // Detener el audio previo (si existía del intento de autoplay)
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.src = ''
+    }
+    // Crear elemento nuevo dentro del gesto — requisito de iOS Safari
+    const audio = new Audio('/conustedes.mp3')
+    audio.volume = 0.6
+    audioRef.current = audio
+    confettiFiredRef.current = false
+    setupTimeUpdate(audio)
+
     audio.play()
       .then(() => {
         playedRef.current = true
@@ -36,42 +55,32 @@ function App() {
   }
 
   useEffect(() => {
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+      || navigator.maxTouchPoints > 1
+
+    if (isMobile) {
+      // Móvil: mostrar hint, esperar gesto del usuario
+      setNeedsInteraction(true)
+      return
+    }
+
+    // Desktop: intentar autoplay silencioso
     const audio = new Audio('/conustedes.mp3')
     audio.loop = false
     audio.volume = 0.6
     audioRef.current = audio
+    const handler = setupTimeUpdate(audio)
 
-    // Confetti 4 segundos antes de que termine
-    const handleTimeUpdate = () => {
-      if (audio.duration && !confettiFiredRef.current && audio.currentTime >= audio.duration - 4) {
-        confettiFiredRef.current = true
-        setShowConfetti(true)
-      }
-    }
-    audio.addEventListener('timeupdate', handleTimeUpdate)
-
-    // Móvil/iOS: mostrar hint siempre — NO marcar playedRef aquí
-    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-      || navigator.maxTouchPoints > 1
-    if (isMobile) setNeedsInteraction(true)
-
-    // Intentar autoplay silencioso (funciona en desktop, Android)
     audio.muted = true
     audio.play()
       .then(() => {
         audio.muted = false
-        if (!isMobile) {
-          // Desktop: autoplay con sonido confirmado
-          playedRef.current = true
-        }
-        // Móvil: no marcamos playedRef, el hint permanece para que el usuario toque
+        playedRef.current = true
       })
-      .catch(() => {
-        setNeedsInteraction(true)
-      })
+      .catch(() => {})
 
     return () => {
-      audio.removeEventListener('timeupdate', handleTimeUpdate)
+      audio.removeEventListener('timeupdate', handler)
       audio.pause()
       audio.src = ''
     }
