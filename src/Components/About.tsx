@@ -8,7 +8,7 @@ export default function About() {
       className="w-full py-20 px-4 md:px-16 relative overflow-hidden"
     >
       {/* Subtle background accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-[120px] bg-neon-red/5 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-[120px] bg-neon-gold/5 pointer-events-none" />
 
       <div className="relative max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
         {/* Image */}
@@ -21,10 +21,10 @@ export default function About() {
         >
           <div className="relative w-full max-w-xs md:max-w-sm">
             {/* Glow */}
-            <div className="absolute -inset-4 rounded-3xl blur-2xl bg-neon-red/10" />
+            <div className="absolute -inset-4 rounded-3xl blur-2xl bg-neon-gold/10" />
             {/* Border gradient */}
             <div className="absolute inset-0 rounded-2xl p-px"
-              style={{ background: 'linear-gradient(135deg, rgba(255,20,20,0.4), transparent, rgba(255,107,0,0.2))' }}
+              style={{ background: 'linear-gradient(135deg, rgba(255,215,0,0.4), transparent, rgba(0,181,80,0.2))' }}
             >
               <div className="w-full h-full rounded-2xl bg-dark" />
             </div>
@@ -47,7 +47,7 @@ export default function About() {
           <div>
             <h2
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight"
-              style={{ color: '#FF1414', textShadow: '0 0 30px rgba(255,20,20,0.7), 0 0 60px rgba(255,20,20,0.3)' }}
+              style={{ color: '#FFD700', textShadow: '0 0 30px rgba(255,215,0,0.7), 0 0 60px rgba(255,215,0,0.3)' }}
             >
               RECUERDA
             </h2>
@@ -56,10 +56,10 @@ export default function About() {
 
           <blockquote
             className="relative glass-card px-6 py-5"
-            style={{ borderLeft: '3px solid #FF1414' }}
+            style={{ borderLeft: '3px solid #FFD700' }}
           >
             <span
-              className="absolute -top-4 left-4 text-5xl font-black text-neon-red/30 leading-none select-none"
+              className="absolute -top-4 left-4 text-5xl font-black text-neon-gold/30 leading-none select-none"
             >"</span>
             <p className="text-white/80 text-base sm:text-lg leading-relaxed italic pt-2">
               Los locos abren los caminos que más tarde recorren los sabios.
@@ -70,7 +70,7 @@ export default function About() {
             {['DJ', 'Animador', 'Productor Champeta'].map((tag) => (
               <span
                 key={tag}
-                className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-neon-red/30 text-neon-red/80 bg-neon-red/5"
+                className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-neon-gold/30 text-neon-gold/80 bg-neon-gold/5"
               >
                 {tag}
               </span>

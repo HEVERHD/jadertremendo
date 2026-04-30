@@ -45,11 +45,11 @@ export default function SocialMedia() {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <p className="text-neon-orange/70 text-xs uppercase tracking-[0.3em] mb-3">
+        <p className="text-neon-gold/70 text-xs uppercase tracking-[0.3em] mb-3">
           Sígueme
         </p>
         <h2 className="section-title text-white mb-4">
-          Redes <span className="text-neon-red neon-text">Sociales</span>
+          Redes <span className="text-neon-gold neon-text">Sociales</span>
         </h2>
         <div className="neon-line" />
       </motion.div>

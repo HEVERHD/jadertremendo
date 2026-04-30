@@ -11,6 +11,8 @@ export default {
         neon: {
           red: '#FF1414',
           orange: '#FF6B00',
+          gold: '#FFD700',
+          green: '#00B550',
           pink: '#FF0080',
         },
         dark: {
@@ -26,13 +28,16 @@ export default {
         display: ['Space Grotesk', 'sans-serif'],
       },
       backgroundImage: {
-        'neon-gradient': 'linear-gradient(135deg, #FF1414, #FF6B00)',
+        'neon-gradient': 'linear-gradient(135deg, #FF1414, #FFD700)',
+        'flag-gradient': 'linear-gradient(180deg, #FF1414 0%, #FFD700 50%, #00B550 100%)',
         'dark-gradient': 'linear-gradient(180deg, #000000 0%, #0D0D0D 100%)',
       },
       boxShadow: {
         'neon-red': '0 0 20px rgba(255,20,20,0.5), 0 0 40px rgba(255,20,20,0.2)',
         'neon-orange': '0 0 20px rgba(255,107,0,0.5), 0 0 40px rgba(255,107,0,0.2)',
-        'neon-sm': '0 0 10px rgba(255,20,20,0.4)',
+        'neon-gold': '0 0 20px rgba(255,215,0,0.5), 0 0 40px rgba(255,215,0,0.2)',
+        'neon-green': '0 0 20px rgba(0,181,80,0.5), 0 0 40px rgba(0,181,80,0.2)',
+        'neon-sm': '0 0 10px rgba(255,215,0,0.4)',
         'glass': '0 8px 32px rgba(0,0,0,0.6)',
       },
       animation: {
@@ -42,16 +47,16 @@ export default {
       },
       keyframes: {
         pulseNeon: {
-          '0%, 100%': { textShadow: '0 0 10px #FF1414, 0 0 20px #FF1414, 0 0 40px #FF1414' },
-          '50%': { textShadow: '0 0 20px #FF1414, 0 0 40px #FF1414, 0 0 80px #FF1414' },
+          '0%, 100%': { textShadow: '0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FFD700' },
+          '50%': { textShadow: '0 0 20px #FFD700, 0 0 40px #FFD700, 0 0 80px #FFD700' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 10px rgba(255,20,20,0.3)' },
-          '100%': { boxShadow: '0 0 30px rgba(255,20,20,0.8), 0 0 60px rgba(255,107,0,0.4)' },
+          '0%': { boxShadow: '0 0 10px rgba(255,215,0,0.3)' },
+          '100%': { boxShadow: '0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(0,181,80,0.4)' },
         },
       },
       backdropBlur: {

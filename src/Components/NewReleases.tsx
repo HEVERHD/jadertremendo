@@ -17,7 +17,7 @@ export default function NewReleases() {
     <section
       id="lanzamientos"
       className="w-full py-20 px-4 flex flex-col items-center"
-      style={{ background: 'linear-gradient(180deg, #000 0%, #0a0000 50%, #000 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #000 0%, #000a02 50%, #000 100%)' }}
     >
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -26,11 +26,11 @@ export default function NewReleases() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10"
       >
-        <p className="text-neon-orange/70 text-xs uppercase tracking-[0.3em] mb-3">
+        <p className="text-neon-gold/70 text-xs uppercase tracking-[0.3em] mb-3">
           Lo más reciente
         </p>
         <h2 className="section-title text-white mb-4">
-          Nuevos <span className="text-neon-red neon-text">Candelazos</span>
+          Nuevos <span className="text-neon-gold neon-text">Candelazos</span>
         </h2>
         <div className="neon-line" />
       </motion.div>
@@ -44,11 +44,13 @@ export default function NewReleases() {
       >
         {/* Outer glow ring */}
         <div className="relative rounded-2xl p-px"
-          style={{ background: 'linear-gradient(135deg, rgba(255,20,20,0.6), rgba(255,107,0,0.4), rgba(255,20,20,0.1))' }}
+          style={{ background: 'linear-gradient(135deg, rgba(255,215,0,0.6), rgba(0,181,80,0.4), rgba(255,20,20,0.3))' }}
         >
           <div className="glass-card overflow-hidden relative rounded-2xl">
             {/* Badge */}
-            <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-neon-red backdrop-blur-sm shadow-neon-sm">
+            <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full backdrop-blur-sm shadow-neon-sm"
+              style={{ background: 'linear-gradient(135deg, #CC0000, #FFD700)' }}
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <span className="text-white text-xs font-bold uppercase tracking-widest">
                 Nuevo

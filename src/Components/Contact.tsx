@@ -35,12 +35,12 @@ export default function Contact() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10 relative z-10"
       >
-        <p className="text-neon-orange/70 text-xs uppercase tracking-[0.3em] mb-3 flex items-center justify-center gap-2">
+        <p className="text-neon-gold/70 text-xs uppercase tracking-[0.3em] mb-3 flex items-center justify-center gap-2">
           <FaCalendarAlt className="text-xs" />
           Contrata para tu evento
         </p>
         <h2 className="section-title text-white mb-4">
-          Con<span className="text-neon-red neon-text">tacto</span>
+          Con<span className="text-neon-gold neon-text">tacto</span>
         </h2>
         <div className="neon-line" />
       </motion.div>
@@ -65,7 +65,7 @@ export default function Contact() {
             onChange={handleChange}
             placeholder="¿Cómo te llamas?"
             required
-            className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/20 text-sm transition-all duration-300 focus:border-neon-red/40 focus:bg-white/8 focus:outline-none"
+            className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/20 text-sm transition-all duration-300 focus:border-neon-gold/40 focus:bg-white/8 focus:outline-none"
           />
         </div>
 
@@ -81,7 +81,7 @@ export default function Contact() {
             placeholder="Cuéntame sobre tu evento, fecha, lugar..."
             required
             rows={4}
-            className="w-full px-4 py-3.5 rounded-xl resize-none bg-white/5 border border-white/10 text-white placeholder-white/20 text-sm transition-all duration-300 focus:border-neon-red/40 focus:bg-white/8 focus:outline-none"
+            className="w-full px-4 py-3.5 rounded-xl resize-none bg-white/5 border border-white/10 text-white placeholder-white/20 text-sm transition-all duration-300 focus:border-neon-gold/40 focus:bg-white/8 focus:outline-none"
           />
         </div>
 

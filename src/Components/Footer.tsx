@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="neon-line mb-4" />
       <p className="text-white/40 text-sm tracking-widest uppercase">
         Powered by{' '}
-        <span className="text-neon-red font-semibold neon-text-sm">
+        <span className="text-neon-gold font-semibold neon-text-sm">
           HEVERT DAVID GD
         </span>
       </p>

@@ -28,7 +28,7 @@ export default function Loader({ onComplete }: LoaderProps) {
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                'radial-gradient(ellipse 60% 50% at 50% 55%, rgba(255,80,0,0.18) 0%, transparent 70%)',
+                'radial-gradient(ellipse 60% 50% at 50% 55%, rgba(255,215,0,0.15) 0%, rgba(0,181,80,0.08) 50%, transparent 70%)',
             }}
           />
 
@@ -42,7 +42,7 @@ export default function Loader({ onComplete }: LoaderProps) {
             className="w-28 h-28 object-contain"
             style={{
               filter:
-                'drop-shadow(0 0 24px rgba(255,80,0,0.9)) drop-shadow(0 0 60px rgba(255,20,20,0.5))',
+                'drop-shadow(0 0 24px rgba(255,215,0,0.9)) drop-shadow(0 0 60px rgba(0,181,80,0.5))',
             }}
           />
 
@@ -57,11 +57,11 @@ export default function Loader({ onComplete }: LoaderProps) {
             <p
               className="font-black text-2xl tracking-[0.1em] uppercase"
               style={{
-                background: 'linear-gradient(180deg, #FF6B00, #FF1414)',
+                background: 'linear-gradient(180deg, #FFD700, #FF1414, #00B550)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                filter: 'drop-shadow(0 0 10px rgba(255,80,0,0.9))',
+                filter: 'drop-shadow(0 0 10px rgba(255,215,0,0.9))',
               }}
             >
               Tremendo
@@ -74,7 +74,7 @@ export default function Loader({ onComplete }: LoaderProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
             className="absolute bottom-14 w-40 h-px rounded-full overflow-hidden"
-            style={{ background: 'rgba(255,107,0,0.15)' }}
+            style={{ background: 'rgba(255,215,0,0.15)' }}
           >
             <motion.div
               initial={{ scaleX: 0 }}
@@ -82,8 +82,8 @@ export default function Loader({ onComplete }: LoaderProps) {
               transition={{ duration: 2.2, ease: 'easeInOut' }}
               className="h-full w-full origin-left rounded-full"
               style={{
-                background: 'linear-gradient(90deg, #FF4500, #FFD700, #FF4500)',
-                boxShadow: '0 0 8px rgba(255,107,0,0.9)',
+                background: 'linear-gradient(90deg, #FF1414, #FFD700, #00B550)',
+                boxShadow: '0 0 8px rgba(255,215,0,0.9)',
               }}
             />
           </motion.div>

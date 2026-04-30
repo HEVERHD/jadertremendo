@@ -30,8 +30,8 @@ export default function AudioProgress({ audioRef }: AudioProgressProps) {
       style={{
         width: `${progress * 100}%`,
         transition: 'width 0.15s linear',
-        background: 'linear-gradient(90deg, #FF1414, #FF6B00, #FFD700)',
-        boxShadow: '0 0 6px rgba(255,107,0,0.9), 0 0 14px rgba(255,20,20,0.5)',
+        background: 'linear-gradient(90deg, #FF1414, #FFD700, #00B550)',
+        boxShadow: '0 0 6px rgba(255,215,0,0.9), 0 0 14px rgba(0,181,80,0.5)',
       }}
     />
   )

@@ -2,14 +2,143 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="https://i.ibb.co/WgLnX2x/logo-Icon32.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Jader Tremendo - DJ, Animador y Productor de Champeta" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         FAVICON & PWA
+    ═══════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#FFD700" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         SEO PRIMARIO
+    ═══════════════════════════════════════════════════════ -->
+    <title>Jader Tremendo | DJ, Animador y Productor de Champeta | Cartagena, Colombia</title>
+    <meta name="description" content="Jader Tremendo — el mejor DJ de Champeta de Cartagena, Colombia. 13+ años de trayectoria, 500+ shows y más de 10 millones de fanáticos. Contrataciones para eventos, fiestas y shows en Colombia y el mundo." />
+    <meta name="keywords" content="Jader Tremendo, DJ Cartagena, DJ Champeta, Champeta Cartagena, DJ Colombia, animador Cartagena, productor champeta, contratar DJ Cartagena, DJ eventos Colombia, musica champeta colombiana, DJ Champeta Colombia" />
+    <meta name="author" content="Jader Tremendo" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jadertremendo.com/" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         GEO — LOCAL SEO CARTAGENA
+    ═══════════════════════════════════════════════════════ -->
+    <meta name="geo.region" content="CO-BOL" />
+    <meta name="geo.placename" content="Cartagena de Indias, Bolívar, Colombia" />
+    <meta name="geo.position" content="10.391049;-75.479426" />
+    <meta name="ICBM" content="10.391049, -75.479426" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         OPEN GRAPH — FACEBOOK, WHATSAPP, LINKEDIN
+    ═══════════════════════════════════════════════════════ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jadertremendo.com/" />
+    <meta property="og:site_name" content="Jader Tremendo" />
+    <meta property="og:title" content="Jader Tremendo | DJ y Productor de Champeta | Cartagena" />
+    <meta property="og:description" content="El mejor DJ de Champeta de Cartagena. 13+ años, 500+ shows, 10M+ fanáticos. Contrataciones para todo tipo de eventos en Colombia y el mundo." />
+    <meta property="og:image" content="https://jadertremendo.com/bandera.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jader Tremendo - DJ Champeta Cartagena Colombia" />
+    <meta property="og:locale" content="es_CO" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         TWITTER / X CARD
+    ═══════════════════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jader Tremendo | DJ Champeta Cartagena Colombia" />
+    <meta name="twitter:description" content="El mejor DJ de Champeta de Cartagena. 13+ años, 500+ shows, 10M+ fanáticos. Contrataciones: +57 314 523 5053" />
+    <meta name="twitter:image" content="https://jadertremendo.com/bandera.jpg" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         JSON-LD — STRUCTURED DATA (Google Rich Results)
+    ═══════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MusicGroup",
+          "@id": "https://jadertremendo.com/#artist",
+          "name": "Jader Tremendo",
+          "alternateName": ["DJ Jader Tremendo", "Jader Tremendo Champeta"],
+          "description": "DJ, Animador y Productor de Champeta de Cartagena de Indias, Colombia. Con más de 13 años de trayectoria, 500+ shows en vivo y más de 10 millones de fanáticos.",
+          "genre": ["Champeta", "Tropical", "Cumbia", "Electrónica tropical"],
+          "url": "https://jadertremendo.com",
+          "image": "https://jadertremendo.com/bandera.jpg",
+          "foundingLocation": {
+            "@type": "Place",
+            "name": "Cartagena de Indias",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Cartagena de Indias",
+              "addressRegion": "Bolívar",
+              "addressCountry": "CO"
+            }
+          },
+          "sameAs": [
+            "https://www.facebook.com/JaderTremendoP",
+            "https://www.instagram.com/jadertremendo",
+            "https://www.tiktok.com/@jadertremendopera",
+            "https://www.youtube.com/channel/UCRlcmj_kyKZEVWPZmY_YoKQ"
+          ]
+        },
+        {
+          "@type": "EntertainmentBusiness",
+          "@id": "https://jadertremendo.com/#business",
+          "name": "Jader Tremendo",
+          "description": "Contrataciones de DJ, animador y productor de Champeta para eventos en Cartagena y toda Colombia.",
+          "url": "https://jadertremendo.com",
+          "telephone": "+573145235053",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+573145235053",
+            "contactType": "reservations",
+            "contactOption": "TollFree",
+            "availableLanguage": "Spanish"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cartagena de Indias",
+            "addressRegion": "Bolívar",
+            "addressCountry": "CO"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "10.391049",
+            "longitude": "-75.479426"
+          },
+          "priceRange": "$$",
+          "sameAs": [
+            "https://www.facebook.com/JaderTremendoP",
+            "https://www.instagram.com/jadertremendo"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://jadertremendo.com/#website",
+          "url": "https://jadertremendo.com",
+          "name": "Jader Tremendo",
+          "description": "Sitio oficial de Jader Tremendo, DJ y Productor de Champeta de Cartagena, Colombia.",
+          "inLanguage": "es-CO",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://jadertremendo.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FUENTES — PRECONNECT + CARGA
+    ═══════════════════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <title>Jader Tremendo</title>
   </head>
   <body>
     <div id="root"></div>

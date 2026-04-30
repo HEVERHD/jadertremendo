@@ -38,37 +38,37 @@
     @apply bg-white/[0.04] backdrop-blur-md border border-white/[0.08] rounded-2xl;
   }
 
-  /* Neon text glow - red */
+  /* Neon text glow - gold */
   .neon-text {
     text-shadow:
-      0 0 8px #FF1414,
-      0 0 20px rgba(255,20,20,0.8),
-      0 0 40px rgba(255,20,20,0.4);
+      0 0 8px #FFD700,
+      0 0 20px rgba(255,215,0,0.8),
+      0 0 40px rgba(255,215,0,0.4);
   }
 
   .neon-text-sm {
     text-shadow:
-      0 0 4px #FF1414,
-      0 0 8px rgba(255,20,20,0.6);
+      0 0 4px #FFD700,
+      0 0 8px rgba(255,215,0,0.6);
   }
 
   /* Neon border */
   .neon-border {
-    @apply border border-neon-red/60;
+    @apply border border-neon-gold/60;
     box-shadow:
-      0 0 12px rgba(255,20,20,0.25),
-      inset 0 0 12px rgba(255,20,20,0.04);
+      0 0 12px rgba(255,215,0,0.25),
+      inset 0 0 12px rgba(255,215,0,0.04);
   }
 
   /* Neon gradient button */
   .btn-neon {
     @apply px-8 py-3.5 font-bold uppercase tracking-widest rounded-xl transition-all duration-300 text-white;
-    background: linear-gradient(135deg, #FF1414, #FF6B00);
-    box-shadow: 0 0 20px rgba(255,20,20,0.4), 0 4px 15px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #FF1414, #FFD700);
+    box-shadow: 0 0 20px rgba(255,215,0,0.4), 0 4px 15px rgba(0,0,0,0.3);
   }
 
   .btn-neon:hover {
-    box-shadow: 0 0 35px rgba(255,20,20,0.7), 0 0 60px rgba(255,107,0,0.3), 0 4px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 35px rgba(255,215,0,0.7), 0 0 60px rgba(0,181,80,0.3), 0 4px 20px rgba(0,0,0,0.4);
     transform: translateY(-3px);
   }
 
@@ -77,17 +77,17 @@
     @apply text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-center;
   }
 
-  /* Neon divider */
+  /* Neon divider — flag colors: red / gold / green */
   .neon-line {
     @apply w-16 h-0.5 mx-auto rounded-full;
-    background: linear-gradient(90deg, transparent, #FF1414, #FF6B00, transparent);
-    box-shadow: 0 0 12px rgba(255,20,20,0.7);
+    background: linear-gradient(90deg, transparent, #FF1414, #FFD700, #00B550, transparent);
+    box-shadow: 0 0 12px rgba(255,215,0,0.7);
   }
 
   /* Section separator (horizontal rule between sections) */
   .section-sep {
     @apply w-full h-px;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,20,20,0.15) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255,215,0,0.15) 50%, transparent 100%);
   }
 }
 
@@ -95,8 +95,8 @@
   /* ─── Swiper custom styles ─────────────────── */
   .swiper-button-next,
   .swiper-button-prev {
-    color: #FF1414 !important;
-    filter: drop-shadow(0 0 6px rgba(255,20,20,0.9));
+    color: #FFD700 !important;
+    filter: drop-shadow(0 0 6px rgba(255,215,0,0.9));
     transform: scale(0.75);
   }
 
@@ -112,8 +112,8 @@
   }
 
   .swiper-pagination-bullet-active {
-    background: #FF1414 !important;
-    box-shadow: 0 0 8px rgba(255,20,20,0.9) !important;
+    background: #FFD700 !important;
+    box-shadow: 0 0 8px rgba(255,215,0,0.9) !important;
     width: 20px !important;
     border-radius: 3px !important;
   }
@@ -130,15 +130,15 @@
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: #000; }
   ::-webkit-scrollbar-thumb {
-    background: #FF1414;
+    background: #FFD700;
     border-radius: 2px;
   }
-  ::-webkit-scrollbar-thumb:hover { background: #FF6B00; }
+  ::-webkit-scrollbar-thumb:hover { background: #00B550; }
 
   /* ─── Selection ─────────────────────────────── */
   ::selection {
-    background: rgba(255,20,20,0.4);
-    color: #fff;
+    background: rgba(255,215,0,0.4);
+    color: #000;
   }
 
   /* ─── Glitch effect ──────────────────────────── */

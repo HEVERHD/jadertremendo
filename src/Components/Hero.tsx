@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
-import bannerImg from '../images/banner.png'
+const bannerImg = '/bandera.jpg'
 
 // Stagger animation for individual letters
 const letterVariants = {
@@ -30,11 +30,11 @@ const letterVariantsUp = {
     scale: [1, 1.5, 0.8, 1.2, 1],
     rotateZ: [0, 10, -10, 5, 0],
     filter: [
-      'drop-shadow(0 0 12px rgba(255,60,0,0.9)) drop-shadow(0 0 30px rgba(255,20,20,0.6))',
-      'drop-shadow(0 0 40px rgba(255,150,0,1)) drop-shadow(0 0 80px rgba(255,60,0,1))',
-      'drop-shadow(0 0 20px rgba(255,60,0,0.9)) drop-shadow(0 0 40px rgba(255,20,20,0.7))',
-      'drop-shadow(0 0 35px rgba(255,120,0,1)) drop-shadow(0 0 60px rgba(255,40,0,0.9))',
-      'drop-shadow(0 0 12px rgba(255,60,0,0.9)) drop-shadow(0 0 30px rgba(255,20,20,0.6))',
+      'drop-shadow(0 0 12px rgba(255,215,0,0.9)) drop-shadow(0 0 30px rgba(0,181,80,0.6))',
+      'drop-shadow(0 0 40px rgba(255,215,0,1)) drop-shadow(0 0 80px rgba(255,215,0,1))',
+      'drop-shadow(0 0 20px rgba(0,181,80,0.9)) drop-shadow(0 0 40px rgba(255,215,0,0.7))',
+      'drop-shadow(0 0 35px rgba(255,215,0,1)) drop-shadow(0 0 60px rgba(0,181,80,0.9))',
+      'drop-shadow(0 0 12px rgba(255,215,0,0.9)) drop-shadow(0 0 30px rgba(0,181,80,0.6))',
     ],
     transition: { duration: 0.6, delay: i * 0.055, ease: 'easeInOut' },
   }),
@@ -135,17 +135,21 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
         style={{ backgroundImage: `url(${bannerImg})` }}
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/95" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
+      {/* Dark overlay — más denso para que la bandera sea fondo, no distracción */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/92" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-black/55" />
+      {/* Vignette lateral para enfocar el centro */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 70% 80% at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%)' }}
+      />
 
-      {/* Fire glow from bottom — pulsing */}
+      {/* Gold/green glow from bottom — pulsing */}
       <motion.div
         animate={{ opacity: [0.7, 1.4, 0.7] }}
         transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute bottom-0 left-0 right-0 h-2/3 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,80,0,0.3) 0%, rgba(255,20,20,0.15) 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,215,0,0.22) 0%, rgba(0,181,80,0.12) 40%, transparent 70%)',
         }}
       />
 
@@ -155,7 +159,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
         transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 60% 40% at 50% 52%, rgba(255,40,0,0.22) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse 60% 40% at 50% 52%, rgba(255,215,0,0.18) 0%, transparent 65%)',
         }}
       />
 
@@ -168,7 +172,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
             background: { color: { value: 'transparent' } },
             fpsLimit: 60,
             particles: {
-              color: { value: ['#FF1414', '#FF6B00', '#FFD700', '#FF4500', '#FF8C00'] },
+              color: { value: ['#FF1414', '#FFD700', '#00B550', '#CC0000', '#FFD700'] },
               links: { enable: false },
               move: {
                 enable: true,
@@ -207,17 +211,17 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-8 flex items-center gap-2 px-5 py-2 rounded-full backdrop-blur-sm"
           style={{
-            background: 'rgba(255,80,0,0.15)',
-            border: '1px solid rgba(255,107,0,0.4)',
-            boxShadow: '0 0 20px rgba(255,80,0,0.2)',
+            background: 'rgba(255,215,0,0.1)',
+            border: '1px solid rgba(255,215,0,0.4)',
+            boxShadow: '0 0 20px rgba(255,215,0,0.2)',
           }}
         >
-          <span className="text-base">🔥</span>
+          <span className="text-base">⚡</span>
           <span className="text-xs font-bold uppercase tracking-[0.25em]"
-            style={{ color: '#FF8C00' }}>
+            style={{ color: '#FFD700' }}>
             DJ · Animador · Productor de Champeta
           </span>
-          <span className="text-base">🔥</span>
+          <span className="text-base">⚡</span>
         </motion.div>
 
         {/* JADER — letters fall from top — beat pulse wrapper */}
@@ -238,13 +242,13 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
               transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-1.5 rounded-full whitespace-nowrap z-20"
               style={{
-                background: 'rgba(255,80,0,0.2)',
-                border: '1px solid rgba(255,107,0,0.5)',
-                boxShadow: '0 0 16px rgba(255,69,0,0.4)',
+                background: 'rgba(255,215,0,0.15)',
+                border: '1px solid rgba(255,215,0,0.5)',
+                boxShadow: '0 0 16px rgba(255,215,0,0.4)',
               }}
             >
               <span className="text-sm">🔊</span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: '#FF8C00' }}>
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: '#FFD700' }}>
                 Toca para escuchar
               </span>
             </motion.div>
@@ -286,11 +290,11 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
                   lineHeight: 1,
                   letterSpacing: '-0.02em',
                   transformStyle: 'preserve-3d',
-                  background: 'linear-gradient(180deg, #FF6B00 0%, #FF1414 50%, #CC0000 100%)',
+                  background: 'linear-gradient(180deg, #FFD700 0%, #FF1414 45%, #00B550 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  filter: 'drop-shadow(0 0 12px rgba(255,60,0,0.9)) drop-shadow(0 0 30px rgba(255,20,20,0.6))',
+                  filter: 'drop-shadow(0 0 12px rgba(255,215,0,0.9)) drop-shadow(0 0 30px rgba(0,181,80,0.6))',
                 }}
               >
                 {letter}
@@ -307,8 +311,8 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
           transition={{ duration: 1.2, delay: 1.3 }}
           className="my-7 w-48 h-0.5 rounded-full"
           style={{
-            background: 'linear-gradient(90deg, transparent, #FF4500, #FFD700, #FF4500, transparent)',
-            boxShadow: '0 0 16px rgba(255,69,0,0.9), 0 0 30px rgba(255,100,0,0.4)',
+            background: 'linear-gradient(90deg, transparent, #FF1414, #FFD700, #00B550, transparent)',
+            boxShadow: '0 0 16px rgba(255,215,0,0.9), 0 0 30px rgba(0,181,80,0.4)',
           }}
         />
 
@@ -324,13 +328,13 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-3 px-9 py-4 rounded-xl font-black text-white uppercase tracking-widest text-sm transition-all duration-200"
             style={{
-              background: 'linear-gradient(135deg, #FF4500, #FF1414, #CC0000)',
-              boxShadow: '0 0 30px rgba(255,69,0,0.7), 0 0 60px rgba(255,20,20,0.3), 0 6px 20px rgba(0,0,0,0.5)',
+              background: 'linear-gradient(135deg, #FF1414, #CC0000, #FFD700)',
+              boxShadow: '0 0 30px rgba(255,215,0,0.6), 0 0 60px rgba(0,181,80,0.3), 0 6px 20px rgba(0,0,0,0.5)',
             }}
           >
-            <span className="text-xl">🔥</span>
+            <span className="text-xl">⚡</span>
             <span>Vamo&apos; alla</span>
-            <span className="text-xl">🔥</span>
+            <span className="text-xl">⚡</span>
           </motion.a>
         </motion.div>
 
@@ -349,7 +353,7 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
                 transition={{ delay: 1.9 + i * 0.1, type: 'spring', bounce: 0.5 }}
                 className="text-2xl sm:text-3xl font-black"
                 style={{
-                  background: 'linear-gradient(180deg, #fff 30%, #FF8C00 100%)',
+                  background: 'linear-gradient(180deg, #fff 30%, #FFD700 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -375,9 +379,9 @@ export default function Hero({ showHint = false, onActivate }: HeroProps) {
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
           className="flex flex-col items-center gap-1"
         >
-          <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: 'rgba(255,107,0,0.4)' }}>scroll</span>
+          <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: 'rgba(255,215,0,0.5)' }}>scroll</span>
           <div className="w-px h-10"
-            style={{ background: 'linear-gradient(to bottom, rgba(255,69,0,0.8), transparent)' }}
+            style={{ background: 'linear-gradient(to bottom, rgba(255,215,0,0.8), transparent)' }}
           />
         </motion.div>
       </motion.div>

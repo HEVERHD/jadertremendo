@@ -33,11 +33,11 @@ export default function Gallery() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10 px-4"
       >
-        <p className="text-neon-orange/70 text-xs uppercase tracking-[0.3em] mb-3">
+        <p className="text-neon-gold/70 text-xs uppercase tracking-[0.3em] mb-3">
           Momentos
         </p>
         <h2 className="section-title text-white mb-4">
-          Gale<span className="text-neon-red neon-text">ría</span>
+          Gale<span className="text-neon-gold neon-text">ría</span>
         </h2>
         <div className="neon-line" />
       </motion.div>
@@ -82,7 +82,7 @@ export default function Gallery() {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent rounded-2xl" />
                 {/* Neon border on hover */}
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-neon-red/40 transition-all duration-300"
+                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-neon-gold/40 transition-all duration-300"
                   style={{ boxShadow: 'inset 0 0 0 0 transparent' }}
                 />
                 {/* Caption */}

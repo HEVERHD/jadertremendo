@@ -63,9 +63,9 @@ export default function Navbar() {
               {label}
               <span className="
                 absolute bottom-0 left-0 w-0 h-0.5
-                bg-gradient-to-r from-neon-red to-neon-orange
+                bg-gradient-to-r from-neon-red to-neon-gold
                 group-hover:w-full transition-all duration-300
-                shadow-[0_0_8px_rgba(255,20,20,0.8)]
+                shadow-[0_0_8px_rgba(255,215,0,0.8)]
               " />
             </a>
           </li>
@@ -103,8 +103,8 @@ export default function Navbar() {
             className="
               absolute top-16 left-0 right-0
               bg-black/95 backdrop-blur-md
-              border-b-2 border-neon-red
-              shadow-[0_8px_32px_rgba(255,20,20,0.15)]
+              border-b-2 border-neon-gold
+              shadow-[0_8px_32px_rgba(255,215,0,0.15)]
               lg:hidden
             "
           >
