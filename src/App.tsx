@@ -2,15 +2,20 @@ import { useState, useEffect, useRef } from 'react'
 import Confetti from 'react-confetti'
 import Navbar from './Components/Navbar'
 import Hero from './Components/Hero'
+import UpcomingShows from './Components/UpcomingShows'
 import NewReleases from './Components/NewReleases'
 import Gallery from './Components/Gallery'
 import Classics from './Components/Classics'
+import Testimonials from './Components/Testimonials'
 import About from './Components/About'
 import Contact from './Components/Contact'
 import SocialMedia from './Components/SocialMedia'
 import Footer from './Components/Footer'
 import Loader from './Components/Loader'
 import AudioProgress from './Components/AudioProgress'
+import WhatsAppFloat from './Components/WhatsAppFloat'
+import CustomCursor from './Components/CustomCursor'
+import SectionDivider from './Components/SectionDivider'
 
 function App() {
   const [showLoader, setShowLoader] = useState(true)
@@ -90,12 +95,14 @@ function App() {
     <>
       <Loader onComplete={() => setShowLoader(false)} />
       {!showLoader && <AudioProgress audioRef={audioRef} />}
+      <CustomCursor />
+      <WhatsAppFloat />
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
           height={window.innerHeight}
           numberOfPieces={900}
-          colors={['#FF1414', '#FF6B00', '#ffffff', '#FF0080', '#FFD700', '#FF4500']}
+          colors={['#FF1414', '#FFD700', '#00B550', '#ffffff', '#CC0000', '#FFCC00']}
           gravity={0.04}
           friction={0.99}
           initialVelocityY={3}
@@ -108,9 +115,17 @@ function App() {
         <Navbar />
         <main>
           <Hero showHint={needsInteraction} onActivate={activateAudio} />
+          <SectionDivider />
+          <UpcomingShows />
+          <SectionDivider />
           <NewReleases />
+          <SectionDivider />
           <Gallery />
+          <SectionDivider />
           <Classics />
+          <SectionDivider />
+          <Testimonials />
+          <SectionDivider />
           <About />
           <Contact />
           <SocialMedia />

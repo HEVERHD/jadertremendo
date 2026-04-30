@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import logoImg from '../images/logo.png'
 
-const navLinks = [
+const navLinks: { label: string; href: string; highlight?: boolean }[] = [
   { label: 'Inicio', href: '#inicio' },
+  { label: 'Shows', href: '#shows', highlight: true },
   { label: 'Lanzamientos', href: '#lanzamientos' },
   { label: 'Galería', href: '#galeria' },
   { label: 'Clásicos', href: '#clasicos' },
@@ -50,24 +51,37 @@ export default function Navbar() {
 
       {/* Desktop menu */}
       <ul className="hidden lg:flex items-center gap-1">
-        {navLinks.map(({ label, href }) => (
+        {navLinks.map(({ label, href, highlight }) => (
           <li key={label}>
-            <a
-              href={href}
-              className="
-                relative px-4 py-2 text-sm font-medium uppercase tracking-widest
-                text-white/60 hover:text-white transition-colors duration-200
-                group
-              "
-            >
-              {label}
-              <span className="
-                absolute bottom-0 left-0 w-0 h-0.5
-                bg-gradient-to-r from-neon-red to-neon-gold
-                group-hover:w-full transition-all duration-300
-                shadow-[0_0_8px_rgba(255,215,0,0.8)]
-              " />
-            </a>
+            {highlight ? (
+              <a
+                href={href}
+                className="relative px-4 py-1.5 text-xs font-black uppercase tracking-widest rounded-full transition-all duration-200 text-black"
+                style={{
+                  background: 'linear-gradient(135deg, #FFD700, #FFAA00)',
+                  boxShadow: '0 0 14px rgba(255,215,0,0.5)',
+                }}
+              >
+                ⚡ {label}
+              </a>
+            ) : (
+              <a
+                href={href}
+                className="
+                  relative px-4 py-2 text-sm font-medium uppercase tracking-widest
+                  text-white/60 hover:text-white transition-colors duration-200
+                  group
+                "
+              >
+                {label}
+                <span className="
+                  absolute bottom-0 left-0 w-0 h-0.5
+                  bg-gradient-to-r from-neon-red to-neon-gold
+                  group-hover:w-full transition-all duration-300
+                  shadow-[0_0_8px_rgba(255,215,0,0.8)]
+                " />
+              </a>
+            )}
           </li>
         ))}
       </ul>
