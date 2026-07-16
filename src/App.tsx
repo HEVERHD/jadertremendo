@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import Confetti from 'react-confetti'
 import Navbar from './Components/Navbar'
 import Hero from './Components/Hero'
-import UpcomingShows from './Components/UpcomingShows'
 import NewReleases from './Components/NewReleases'
 import Gallery from './Components/Gallery'
 import Classics from './Components/Classics'
@@ -115,8 +114,6 @@ function App() {
         <Navbar />
         <main>
           <Hero showHint={needsInteraction} onActivate={activateAudio} />
-          <SectionDivider />
-          <UpcomingShows />
           <SectionDivider />
           <NewReleases />
           <SectionDivider />

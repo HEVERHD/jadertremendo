@@ -4,8 +4,7 @@ import logoImg from '../images/logo.png'
 
 const navLinks: { label: string; href: string; highlight?: boolean }[] = [
   { label: 'Inicio', href: '#inicio' },
-  { label: 'Shows', href: '#shows', highlight: true },
-  { label: 'Lanzamientos', href: '#lanzamientos' },
+  { label: 'Álbum', href: '#lanzamientos', highlight: true },
   { label: 'Galería', href: '#galeria' },
   { label: 'Clásicos', href: '#clasicos' },
   { label: 'About', href: '#about' },
